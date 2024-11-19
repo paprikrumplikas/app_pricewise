@@ -2,6 +2,7 @@
 // but interactive components (that have eg. state, hooks, onChnage, onSubmit) need to be client-side. 
 // So we need this directive.
 'use client'
+import { scrapeAndStoreProduct } from '@/lib/actions';
 import React, { FormEvent, useState } from 'react';
 
 const Searchbar = () => {
@@ -29,7 +30,7 @@ const Searchbar = () => {
         }
     }
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // @note @learning default is to reload the page on submission. We dont want that
         const isValidLink = isValidAmazonProductUrl(searchPrompt);
 
@@ -40,7 +41,9 @@ const Searchbar = () => {
 
         try {
             setIsLoading(true);
-            // scrape our first product
+
+            // @note scrape product
+            const product = await scrapeAndStoreProduct(searchPrompt);
         } catch (error) {
             console.log(error);
         } finally {

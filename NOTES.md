@@ -1,12 +1,19 @@
 Next.js
 
+Tools / deps used:
+
+1. Next.js
+2. Bright Data
+3. Axios: used to make API calls
+4. Cheerio: for parsing and maipulaton HTML and HML
+5. HeroCarousel
 
 Project setup
 
 1. Next.js installation: npx create-next-app@latest https://nextjs.org/docs/getting-started/installation
 2. app/page is the home
 3. get the CSS from instrictor, paste it to app/globals.css
-4. modify tailwinf.config.ts with instructors version
+4. modify tailwind.config.ts with instructors version
 5. layout.tsx: @learning this is a special file. Allows to share different parts of the app across different pages. It is where you import fonts from google or elsewhere. 
     1. Add:
             import { Inter, Space_Grotesk } from "next/font/google";
@@ -19,6 +26,17 @@ Project setup
             1. Add a classname. We always want a max width.
         2. add a nacbar component
 6. change public folder to instuctors version
+
+7. Scraper setup
+    1. Declaring server actions: @learning
+        - Create lib/actions/index.ts
+        - decalre file as use server
+    2. Create scraper in lib/scraper/index.ts
+        - use BrightData @crucial (signed up with github)
+            - on the dashboard/proxies, choose webUnlocker tool
+
+7. Dependencies @learning
+
 
 
 
@@ -34,13 +52,13 @@ Development
     Actually, this might be a reason why this is separated to a component.
     To make is client-side, add `'use client'` to top of the file.
     2. Learnings @crucial @learning
-             1. In next.js, use optimized <Image> instead of <img>
- 2. <input> ususally goes into <form>, together with a <button>
- 3. <form> tyically has the props: onSubmit
- 4. <input> typically has the props: type, placeholder, value, onChange,  
- 5. <button> can have a disabled prop for e.g. if user did not type anything yet
- 6. Blocking notifications are easily displayed as `alert("Please provide a valid Amazon link.")`
-    2. Input element in a form element @learning @crucial
+        1. In next.js, use optimized <Image> instead of <img>
+        2. <input> ususally goes into <form>, together with a <button>
+        3. <form> tyically has the props: onSubmit
+        4. <input> typically has the props: type, placeholder, value, onChange,  
+        5. <button> can have a disabled prop for e.g. if user did not type anything yet
+        6. Blocking notifications are easily displayed as `alert("Please provide a valid Amazon link.")`
+    3. Input element in a form element @learning @crucial
             You want to handle form submissions (like in your case)
             You need to group related input fields
             You want to leverage built-in form features like:
